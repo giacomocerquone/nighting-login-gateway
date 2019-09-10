@@ -4,12 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Test Deep Link</title>
+    <title>Nighting - Facebook Login</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #071d32;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+    </style>
   </head>
+
   <body>
     <script>
+      const qs = window.location.search;
+      const split = qs.split("&");
+      const code = split[0];
+
+      document
+        .getElementById("link")
+        .setAttribute("href", `nighting://fb-login/${code}`);
+
       alert(window.location.href);
     </script>
-    <a href="nighting://fb-login/">Return to the app</a>
+
+    <a id="link">Ritorna in Nighting</a>
   </body>
 </html>
