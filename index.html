@@ -35,7 +35,7 @@
       const qs = window.location.search.substring(1);
       const split = qs.split("&");
       const code = split[0];
-      const link = `nighting://fb-login/${code}`;
+      const link = `nighting://fb-login/?${code}`;
 
       var isChrome =
         /Chrome/.test(navigator.userAgent) &&
