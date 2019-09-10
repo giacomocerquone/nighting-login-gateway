@@ -29,18 +29,26 @@
   </head>
 
   <body>
+    <a id="link">Ritorna in Nighting</a>
+
     <script>
-      const qs = window.location.search;
+      const qs = window.location.search.substring(1);
       const split = qs.split("&");
       const code = split[0];
+      const link = `nighting://fb-login/${code}`;
 
-      document
-        .getElementById("link")
-        .setAttribute("href", `nighting://fb-login/${code}`);
+      var isChrome =
+        /Chrome/.test(navigator.userAgent) &&
+        /Google Inc/.test(navigator.vendor);
+      if (isChrome) {
+        document.getElementById("link").setAttribute("href", link);
+      } else {
+        setTimeout(function() {
+          window.location.href = link;
+        }, 800);
+      }
 
       alert(window.location.href);
     </script>
-
-    <a id="link">Ritorna in Nighting</a>
   </body>
 </html>
