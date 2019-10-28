@@ -29,6 +29,7 @@
   </head>
 
   <body>
+    <p>Autenticazione completata!</p>
     <a id="link">Chiudi</a>
 
     <script>
@@ -36,7 +37,17 @@
       const split = qs.split("&");
       const code = split[0];
       const link = `nighting://fb-login/?${code}`;
-      document.getElementById("link").setAttribute("href", link);
+
+      var isChrome =
+        /Chrome/.test(navigator.userAgent) &&
+        /Google Inc/.test(navigator.vendor);
+      if (isChrome) {
+        document.getElementById("link").setAttribute("href", link);
+      } else {
+        setTimeout(function() {
+          window.location.href = link;
+        }, 800);
+      }
     </script>
   </body>
 </html>
