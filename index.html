@@ -40,12 +40,13 @@
       var isChrome =
         /Chrome/.test(navigator.userAgent) &&
         /Google Inc/.test(navigator.vendor);
-      if (isChrome) {
-        document.getElementById("link").setAttribute("href", link);
-      } else {
+
+      document.getElementById("link").setAttribute("href", link);
+
+      if (!isChrome) {
         setTimeout(function() {
           window.location.href = link;
-        }, 800);
+        }, 1500);
       }
     </script>
   </body>
